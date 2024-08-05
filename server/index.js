@@ -3,9 +3,13 @@ const app = express();
 
 app.set('port', process.env.PORT || 3003);
 
-// app.get('/', (req, res) => {
-// 	res.send('Hello, Express')
-// });
+app.get('/', (req, res) => {
+	getProducts(req.query.s)
+			.then((response) => res.send(response))
+			.catch((error) => console.log('err', error))
+	// console.log('result', result)
+	// res.send('Hello, Express')
+});
 
 app.listen(app.get('port'), ()=>{
 	console.log(app.get('port'), '번 포트에서 대기 중')
@@ -83,8 +87,11 @@ const getProducts = async (keyword) => {
 
 	const productsYmart = await parsingYmart(html[0].data); // Parsing for Ymart and return as array
 	const productsDawayo = await parsingDawayo(html[1].data); // Parsing for Dawayo and return as array
+	let all = [];
+	all.push(...productsYmart);
+	all.push(...productsDawayo);
+	return all;
 
-	console.log(productsYmart, productsDawayo);
 };
 
-getProducts('김치'); // Get products with keyword
+// getProducts('김치'); // Get products with keyword
