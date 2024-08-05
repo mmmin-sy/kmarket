@@ -22,8 +22,8 @@ const https = require('https');
 
 const getHTML = async (keyword) => {
 	const endpoint = [
-		"https://www.y-mart.de/de/search?q=" + encodeURI(keyword),
-		"https://dawayo.de/de/?post_type=product&s=" + encodeURI(keyword)
+		"https://www.y-mart.de/ko/search?q=" + encodeURI(keyword),
+		"https://dawayo.de/ko/?post_type=product&s=" + encodeURI(keyword)
 	];
 	const httpsAgent = new https.Agent({
 		rejectUnauthorized: false
