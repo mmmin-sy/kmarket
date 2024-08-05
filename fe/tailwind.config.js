@@ -17,7 +17,8 @@ module.exports = {
 						lighter: '#dddddd',
 						light: '#cccccc',
 						dark: '#bbbbbb',
-						darkest: '#888888',
+						darker: '#888888',
+						darkest: '#444444',
 					},
 					turkishRose: '#b57281',
 					pinkGray: '#e7dada'
