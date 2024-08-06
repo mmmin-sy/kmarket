@@ -11,7 +11,7 @@ export default async function SearchForm (){
 	}
 	return (
 		<>
-			<Link href="/"  className="text-5xl font-['Pacifico'] text-custom-deepPink">Hello, K market!</Link>
+			<Link href="/"  className="text-4xl font-['Pacifico'] text-custom-deepPink">Hello, K market!</Link>
 
 			<form action={handle}>
 				<input type="text" name="search" className="p-1 border border-solid border-custom-gray-light rounded-l-md focus:outline-none"/>
