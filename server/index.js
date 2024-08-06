@@ -23,7 +23,7 @@ const https = require('https');
 const getHTML = async (keyword) => {
 	const endpoint = [
 		"https://www.y-mart.de/ko/search?q=" + encodeURI(keyword),
-		"https://dawayo.de/ko/?post_type=product&s=" + encodeURI(keyword)
+		"https://dawayo.de/?post_type=product&s=" + encodeURI(keyword)
 	];
 	const httpsAgent = new https.Agent({
 		rejectUnauthorized: false
@@ -49,7 +49,7 @@ const parsingYmart = async (page) => {
 			return this.type === 'text';
 		});
 		const portion = $(this).find('.prodspecs:nth-of-type(1)').find('.text-nowrap').text().trim();
-		const price = $(this).find('.prodlistprice').text().trim();
+		const price = $(this).find('.prodlistprice').text().replace("€","").trim().replace(",",".");
 		products.push({
 			title: title + ' ' + volume,
 			link: baseUrl + link,
@@ -71,10 +71,10 @@ const parsingDawayo = async (page) => {
 		const baseUrl = 'http://dawayo.de/';
 		const title = $(this).find('.woocommerce-loop-product__title').text();
 		const link = $(this).find('.woocommerce-loop-product__title').find('a').attr('href');
-		const price = $(this).find('.price').find('.woocommerce-Price-amount').first().text();
+		const price = $(this).find('.price').find('.woocommerce-Price-amount').first().text().replace("€","").trim();
 		const portion = $(this).find('.price').find('.mcmp_recalc_price_row').text().trim();
 
-		const savedPrice = $(this).find('.price').find('ins').first().find('.woocommerce-Price-amount').text();
+		const savedPrice = $(this).find('.price').find('ins').first().find('.woocommerce-Price-amount').text().replace("€","").trim();
 		const savedPortion = $(this).find('.price').find('.mcmp_recalc_price_row > ins').text().trim();
 		const savedPortionUnit = $(this).find('.price').find('.mcmp_recalc_price_row > .mcmp-recalc-price-suffix').text().trim();
 
@@ -101,5 +101,3 @@ const getProducts = async (keyword) => {
 	return all;
 
 };
-
-// getProducts('김치'); // Get products with keyword
