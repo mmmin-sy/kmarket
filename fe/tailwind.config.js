@@ -21,7 +21,8 @@ module.exports = {
 						darkest: '#444444',
 					},
 					turkishRose: '#b57281',
-					pinkGray: '#e7dada'
+					pinkGray: '#e7dada',
+					deepPink: '#8f4b5a'
 				}
 			}
 		},
