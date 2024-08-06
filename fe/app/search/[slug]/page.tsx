@@ -20,9 +20,9 @@ export default async function Search ({ params }: { params: { slug: string } }){
 			</div>
 
 			<div className="flex items-center justify-center py-5">
+				{/*Todo: Loading State */}
 				<Result data={data}/>
 			</div>
 		</>
-
 	)
 }
