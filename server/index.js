@@ -23,7 +23,7 @@ const https = require('https');
 const getHTML = async (keyword) => {
 	const endpoint = [
 		"https://www.y-mart.de/ko/search?q=" + encodeURI(keyword),
-		"https://dawayo.de/?post_type=product&s=" + encodeURI(keyword)
+		"https://dawayo.de/ko/?post_type=product&s=" + encodeURI(keyword)
 	];
 	const httpsAgent = new https.Agent({
 		rejectUnauthorized: false
@@ -78,7 +78,6 @@ const parsingDawayo = async (page) => {
 		const savedPortion = $(this).find('.price').find('.mcmp_recalc_price_row > ins').text().trim();
 		const savedPortionUnit = $(this).find('.price').find('.mcmp_recalc_price_row > .mcmp-recalc-price-suffix').text().trim();
 
-//Todo: show savedPrice
 		products.push({
 			title: title,
 			link: baseUrl + link,
@@ -87,7 +86,6 @@ const parsingDawayo = async (page) => {
 			market: 'dawayo'
 		});
 	});
-
 
 	return products;
 };
