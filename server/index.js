@@ -68,7 +68,6 @@ const parsingDawayo = async (page) => {
 
 	let products = [];
 	$('ul.products li').each(function(i, elm) {
-		const baseUrl = 'http://dawayo.de/';
 		const title = $(this).find('.woocommerce-loop-product__title').text();
 		const link = $(this).find('.woocommerce-loop-product__title').find('a').attr('href');
 		const price = $(this).find('.price').find('.woocommerce-Price-amount').first().text().replace("€","").trim();
@@ -80,7 +79,7 @@ const parsingDawayo = async (page) => {
 
 		products.push({
 			title: title,
-			link: baseUrl + link,
+			link: link,
 			portion: savedPortion ? savedPortion + savedPortionUnit : portion,
 			price: savedPrice ? savedPrice : price,
 			market: 'dawayo'
