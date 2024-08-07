@@ -1,15 +1,18 @@
 import ResultItem from "@/component/Result/ResultItem";
+import axios from "axios";
 interface ResultProps {
-	data: {
-		title: string,
-		link: string,
-		portion: string,
-		price: string,
-		market: string
-	}[]
+	slug: string;
 }
+async function getData(search: string) {
+	const res = await axios.get('http://localhost:3003/?s=' + search);
+	if (!res) {
+		throw new Error('Failed to fetch data')
+	}
 
-export default function Result({ data }: ResultProps){
+	return res.data;
+}
+export default async function Result({ slug }: ResultProps){
+	const data = await getData(slug);
 	return (
 		<>
 			{ data.length > 0 ? (
