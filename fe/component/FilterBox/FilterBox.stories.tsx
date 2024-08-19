@@ -1,19 +1,19 @@
 import type { StoryObj } from "@storybook/react";
-import Filter from "./Filter";
+import FilterBox from "./FilterBox";
 import React from "react";
 
 const meta: { component: () => React.JSX.Element} = {
-	title: 'Filter',
-	component: Filter
+	title: 'FilterBox',
+	component: FilterBox,
 };
 
 export default meta;
-type Story = StoryObj<typeof Filter>;
+type Story = StoryObj<typeof FilterBox>;
 
 export const Basic: Story = {
 	args: {
-		max: 100,
-		min: 23,
-		unit: '€'
-	}
+		priceMax: 100,
+		priceMin: 1,
+		priceUnit: '€'
+	},
 };
