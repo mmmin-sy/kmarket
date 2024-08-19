@@ -11,6 +11,8 @@ export default function FilterBox ( { priceMin, priceMax, priceUnit }: FilterBox
 	return (
 		<div className="border border-solid border-custom-gray-light">
 			<Filter min={priceMin} max={priceMax} unit={priceUnit} />
+
+			<button onClick={() => console.log('click!!')}>Adjust</button>
 		</div>
 	)
 }

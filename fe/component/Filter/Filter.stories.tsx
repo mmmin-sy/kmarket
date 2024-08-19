@@ -12,8 +12,8 @@ type Story = StoryObj<typeof Filter>;
 
 export const Basic: Story = {
 	args: {
-		max: 100,
-		min: 23,
+		max: 100000000000,
+		min: 0,
 		unit: '€'
 	}
 };

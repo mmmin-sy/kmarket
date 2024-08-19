@@ -34,7 +34,7 @@ export default function Filter ({ max, min, unit }: FilterProps){
 		const newPercentage = getPercentage(position);
 		setLowerPer(newPercentage);
 
-		const newValue = Math.floor(((newPercentage / 100) * (max - min)) + min);
+		const newValue = Math.round(((newPercentage / 100) * (max - min)) + min);
 		setLowerVal(newValue);
 	}
 
@@ -67,7 +67,7 @@ export default function Filter ({ max, min, unit }: FilterProps){
 		const newPercentage = getPercentage(position);
 		setUpperPer(newPercentage);
 
-		const newValue = Math.floor(((newPercentage / 100) * (max - min)) + min);
+		const newValue = Math.round(((newPercentage / 100) * (max - min)) + min);
 		setUpperVal(newValue);
 	}
 
@@ -81,9 +81,7 @@ export default function Filter ({ max, min, unit }: FilterProps){
 			<div className="relative h-[40px]">
 				<div className="h-[4px]">
 					<div ref={sliderRef} className="h-full border border-solid bg-custom-gray-lighter rounded">
-
 						<div className="w-full absolute top-0 left-0 h-[4px]">
-
 							<div className="relative">
 								<div
 									ref={lowerRef}

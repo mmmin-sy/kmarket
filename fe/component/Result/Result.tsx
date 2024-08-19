@@ -1,26 +1,36 @@
 import ResultItem from "@/component/Result/ResultItem";
-import axios from "axios";
-interface ResultProps {
-	slug: string;
-}
-async function getData(search: string) {
-	const res = await axios.get('http://localhost:3003/?s=' + search);
-	if (!res) {
-		throw new Error('Failed to fetch data')
-	}
+import FilterBox from "@/component/FilterBox/FilterBox";
 
-	return res.data;
+interface ResultProps {
+	data: {
+		title: string,
+		link: string,
+		portion: string,
+		price: string,
+		market: string
+	}[];
 }
-export default async function Result({ slug }: ResultProps){
-	const data = await getData(slug);
+
+export default async function Result({ data }: ResultProps){
+	const min: number = data.reduce((min, d) => {
+		return Math.floor(Number(d.price)) < min ?  Math.floor(Number(d.price)) : min
+	}, Number(data[0].price));
+
+	const max = data.reduce((max, d) => {
+		return Math.ceil(Number(d.price)) > max ? Math.ceil(Number(d.price)) : max
+	}, Number(data[0].price));
+
 	return (
-		<>
+		<div className="flex flex-col">
 			{ data.length > 0 ? (
-				<div className="border-t border-solid border-custom-gray-light">
-					{data.map((item, id) => <ResultItem key={id} item={item} />)}
-				</div>
+				<>
+					<FilterBox priceMin={min} priceMax={max} priceUnit={'€'} />
+					<div className="border-t border-solid border-custom-gray-light">
+						{data.map((item, id) => <ResultItem key={id} item={item}/>)}
+					</div>
+				</>
 			) : <div>No Result!</div>
 			}
-		</>
+		</div>
 	)
 }

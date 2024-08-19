@@ -1,6 +1,6 @@
-import Result from "@/component/Result/Result";
 import SearchForm from '@/component/SearchForm/SearchForm';
 import { Suspense } from "react";
+import ResultContainer from "@/component/Result/ResultContainer";
 
 export default async function Search ({ params }: { params: { slug: string } }){
 	return (
@@ -11,7 +11,7 @@ export default async function Search ({ params }: { params: { slug: string } }){
 
 			<div className="flex items-center justify-center py-5">
 				<Suspense fallback={<p>....Loading</p>}>
-					<Result slug={params.slug}/>
+					<ResultContainer slug={params.slug}/>
 				</Suspense>
 			</div>
 		</>
