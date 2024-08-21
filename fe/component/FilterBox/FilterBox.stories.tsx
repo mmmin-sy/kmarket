@@ -3,7 +3,7 @@ import FilterBox from "./FilterBox";
 import React from "react";
 
 const meta: { component: () => React.JSX.Element} = {
-	title: 'FilterBox',
+	title: 'Filter/FilterBox',
 	component: FilterBox,
 };
 

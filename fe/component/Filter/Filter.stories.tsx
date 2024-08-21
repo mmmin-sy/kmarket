@@ -3,7 +3,7 @@ import Filter from "./Filter";
 import React from "react";
 
 const meta: { component: () => React.JSX.Element} = {
-	title: 'Filter',
+	title: 'Filter/Filter',
 	component: Filter
 };
 

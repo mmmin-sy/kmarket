@@ -1,12 +1,14 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import ErrorMessage from "@/component/ErrorMessage/ErrorMessage";
 
 interface FilterProps {
 	max: number;
 	min: number;
 	unit?: string;
+	updatedNewMin: (value: number) => void;
+	updatedNewMax: (value: number) => void;
 }
-export default function Filter ({ max, min, unit }: FilterProps){
+export default function Filter ({ max, min, unit, updatedNewMin, updatedNewMax }: FilterProps){
 	const sliderRef = React.useRef<HTMLInputElement>(null);
 	const lowerRef = React.useRef<HTMLInputElement>(null);
 	const upperRef = React.useRef<HTMLInputElement>(null);
@@ -16,7 +18,6 @@ export default function Filter ({ max, min, unit }: FilterProps){
 
 	const [lowerValue, setLowerVal] = useState<number>(min);
 	const [upperValue, setUpperVal] = useState<number>(max);
-
 
 	const getPercentage = (current) => {
 		const sliderWidth = sliderRef.current.getBoundingClientRect().width;
@@ -38,6 +39,7 @@ export default function Filter ({ max, min, unit }: FilterProps){
 
 		const newValue = Math.round(((newPercentage / 100) * (max - min)) + min);
 		setLowerVal(newValue);
+		updatedNewMin(newValue);
 	}
 
 	const handleLowerMouseDown = () => {
@@ -71,6 +73,7 @@ export default function Filter ({ max, min, unit }: FilterProps){
 
 		const newValue = Math.round(((newPercentage / 100) * (max - min)) + min);
 		setUpperVal(newValue);
+		updatedNewMax(newValue);
 	}
 
 	const handleUpperMouseUp = () => {
