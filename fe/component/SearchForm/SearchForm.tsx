@@ -17,7 +17,7 @@ export default async function SearchForm (){
 				<input
 					type="text"
 					name="search"
-					className="w-1/2 p-1 border border-solid border-custom-gray-light rounded-l-md focus:outline-none"/>
+					className="w-full max-w-[740px] p-1 border border-solid border-custom-gray-light rounded-l-md focus:outline-none"/>
 				<button
 					className="text-sm py-1 px-2 border border-solid border-custom-gray-darker bg-custom-gray-darker text-custom-gray-lighter rounded-r-md hover:bg-custom-gray-darkest hover:border-custom-gray-darkest">search
 				</button>

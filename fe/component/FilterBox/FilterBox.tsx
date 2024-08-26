@@ -17,7 +17,7 @@ export default function FilterBox ( { priceMin, priceMax, priceUnit }: FilterBox
 	const { updatePrice } = useStore((state) => state.actions);
 
 	return (
-		<div className="border border-solid border-custom-gray-light">
+		<div className="border border-solid border-custom-gray-light p-2 mb-2">
 			<Filter
 				min={priceMin}
 				max={priceMax}
@@ -26,7 +26,7 @@ export default function FilterBox ( { priceMin, priceMax, priceUnit }: FilterBox
 				updatedNewMax={(value) => setNewPriceMax(value)}
 			/>
 
-			<button onClick={() => updatePrice(newPriceMin, newPriceMax)}>Adjust</button>
+			<button onClick={() => updatePrice(newPriceMin, newPriceMax)} className="rounded bg-custom-pinkGray text-sm p-2 hover:bg-custom-turkishRose">Adjust</button>
 		</div>
 	)
 }
