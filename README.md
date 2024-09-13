@@ -25,9 +25,13 @@ open [http://localhost:3001]
 
 Unit Test - Jest
 
+/fe/tests/
+
 `npm run test`
 
 UI Test - Playwright
+
+/fe/e2e/
 
 `npx playwright test`
 
