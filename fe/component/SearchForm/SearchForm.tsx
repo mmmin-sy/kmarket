@@ -3,12 +3,19 @@
 import { redirect } from "next/navigation";
 import Link from "next/link";
 
-export default async function SearchForm (){
+interface SearchFormProps {
+	lang: string;
+}
+export default async function SearchForm ({ lang }: SearchFormProps){
 	async function handle(formData) {
 		'use server';
 		const searchString = formData.get('search');
-		redirect(`/search/${encodeURIComponent(searchString)}`);
+
+		if(searchString !== "") {
+			redirect(`/${lang === "" ? 'ko' : lang}/search/${encodeURIComponent(searchString)}`);
+		}
 	}
+
 	return (
 		<>
 			<Link href="/"  className="text-4xl font-['Pacifico'] text-custom-deepPink mb-5">Hello, K market!</Link>
